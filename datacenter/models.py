@@ -39,9 +39,8 @@ class Visit(models.Model):
             visit_time = self.leaved_at - self.entered_at
         visit_time_in_seconds = visit_time.total_seconds()
         visit_time_in_minutes = visit_time_in_seconds // 60
-        if visit_time_in_minutes > minutes:
-            return True
-        return False
+        long_visit = visit_time_in_minutes > minutes
+        return long_visit
 
     def __str__(self):
         return "{user} entered at {entered} {leaved}".format(
